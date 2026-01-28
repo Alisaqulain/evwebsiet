@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-white text-gray-900 antialiased;
+    overflow-x: hidden;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Optimize animations for performance */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* GPU acceleration for smooth animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-dark-green via-light-green to-light-blue;
+  }
+  
+  .glow-effect {
+    filter: drop-shadow(0 0 20px rgba(26, 95, 63, 0.3));
+  }
+  
+  .bg-pattern {
+    background-image: 
+      linear-gradient(rgba(26, 95, 63, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 95, 63, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Smooth fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .fade-in-down {
+    animation: fadeInDown 0.8s ease-out;
+  }
+  
+  /* Slide animations */
+  .slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+  
+  .slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+  
+  /* Scale animations */
+  .scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+  
+  /* Hover animations */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate3d {
+  0% {
+    transform: translateY(-50%) rotateY(0deg) rotateX(10deg);
+  }
+  25% {
+    transform: translateY(-50%) rotateY(90deg) rotateX(5deg);
+  }
+  50% {
+    transform: translateY(-50%) rotateY(180deg) rotateX(10deg);
+  }
+  75% {
+    transform: translateY(-50%) rotateY(270deg) rotateX(5deg);
+  }
+  100% {
+    transform: translateY(-50%) rotateY(360deg) rotateX(10deg);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
