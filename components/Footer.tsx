@@ -10,18 +10,27 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="flex items-center space-x-3 mb-4">
-              <div className="relative w-12 h-12">
+            <Link href="/" className="flex items-center space-x-4 mb-4 group">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src="/logo.jpeg"
+                  src="/logwithoutbg.png"
                   alt="Royal Metro EV Logo"
                   fill
                   className="object-contain"
+                  sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, (max-width: 1024px) 128px, 144px"
                 />
               </div>
-              <h2 className="text-xl font-bold text-dark-green">
-                Royal Metro <span className="text-light-blue">EV</span>
-              </h2>
+              <div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                  <span className="bg-gradient-to-r from-dark-green to-light-green bg-clip-text text-transparent">
+                    Royal Metro
+                  </span>
+                  <span className="text-light-blue ml-1">EV</span>
+                </h2>
+                <p className="text-sm sm:text-base text-gray-500 font-medium mt-1">
+                  Electric Mobility
+                </p>
+              </div>
             </Link>
             <p className="text-gray-600 mb-4 max-w-md">
               Driving the future of electric mobility with premium, sustainable e-rickshaw solutions. 

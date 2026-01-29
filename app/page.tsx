@@ -40,40 +40,6 @@ export default function Home() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length)
   }
 
-  // Stats Section State
-  const [counts, setCounts] = useState({
-    vehicles: 0,
-    customers: 0,
-    cities: 0,
-    emissions: 0,
-  })
-
-  useEffect(() => {
-    const targets = { vehicles: 5000, customers: 10000, cities: 50, emissions: 500 }
-    const duration = 2000
-    const steps = 60
-    const increment = duration / steps
-
-    let currentStep = 0
-    const timer = setInterval(() => {
-      currentStep++
-      const progress = currentStep / steps
-      
-      setCounts({
-        vehicles: Math.floor(targets.vehicles * progress),
-        customers: Math.floor(targets.customers * progress),
-        cities: Math.floor(targets.cities * progress),
-        emissions: Math.floor(targets.emissions * progress),
-      })
-
-      if (currentStep >= steps) {
-        clearInterval(timer)
-        setCounts(targets)
-      }
-    }, increment)
-
-    return () => clearInterval(timer)
-  }, [])
 
   // Features Data with actual product images
   const features = [
@@ -155,41 +121,6 @@ export default function Home() {
     },
   ]
 
-  // Testimonials Data
-  const testimonials = [
-    {
-      name: 'Rajesh Kumar',
-      role: 'E-Rickshaw Operator',
-      location: 'Muzaffarnagar',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=80',
-      text: 'Royal Metro EV has changed my business completely. The vehicle is reliable, efficient, and the after-sales service is excellent. Highly recommended!',
-      rating: 5,
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'Business Owner',
-      location: 'Shamli',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=80',
-      text: 'I bought three e-rickshaws from Royal Metro EV. The quality is outstanding and my drivers love how comfortable they are. Great investment!',
-      rating: 5,
-    },
-    {
-      name: 'Amit Singh',
-      role: 'Fleet Manager',
-      location: 'Meerut',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&q=80',
-      text: 'The battery life and performance of Royal Metro EV vehicles exceed expectations. Our fleet has been running smoothly for over a year now.',
-      rating: 5,
-    },
-  ]
-
-  // Stats Data
-  const stats = [
-    { label: 'Vehicles Sold', value: counts.vehicles, suffix: '+', color: 'text-dark-green' },
-    { label: 'Happy Customers', value: counts.customers, suffix: '+', color: 'text-light-green' },
-    { label: 'Cities Served', value: counts.cities, suffix: '+', color: 'text-light-blue' },
-    { label: 'CO₂ Saved (tons)', value: counts.emissions, suffix: '+', color: 'text-light-green' },
-  ]
 
   // Callback Form State
   const [callbackForm, setCallbackForm] = useState({
@@ -326,7 +257,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 gap-8 lg:gap-12 items-center">
             {/* Left Side - Content */}
             <div className="space-y-6 sm:space-y-8 fade-in-up">
               {/* Badge */}
@@ -397,27 +328,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Side - Stats Cards Floating */}
-            <div className="relative fade-in-up z-20" style={{ animationDelay: '0.2s' }}>
-              {/* Floating Stats Cards */}
-              <div className="flex flex-col items-end gap-4">
-                <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-2xl p-6 border border-white/50">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-dark-green to-light-green bg-clip-text text-transparent">5000+</div>
-                  <div className="text-sm text-gray-700 font-medium">Vehicles Sold</div>
-                </div>
-                <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-2xl p-6 border border-white/50">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-light-green to-light-blue bg-clip-text text-transparent">10000+</div>
-                  <div className="text-sm text-gray-700 font-medium">Happy Customers</div>
-                </div>
-              </div>
-
-              {/* Floating Badge */}
-              <div className="absolute -top-4 -right-4 bg-white/95 backdrop-blur-md rounded-full shadow-xl p-4 animate-bounce">
-                <div className="w-16 h-16 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
-                  <span className="text-2xl">⚡</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -446,6 +356,170 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Key Features Section */}
+      <section className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 bg-gray-100 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6 sm:mb-8 fade-in-up">
+            <span className="inline-block px-4 py-2 bg-dark-green/10 text-dark-green rounded-full text-sm font-semibold mb-3">
+              ⚡ Our Features
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dark-green">
+              Key Features of Royal Metro EV
+            </h2>
+          </div>
+
+          {/* Features Layout with Center Image */}
+          <div className="relative min-h-[600px] sm:min-h-[700px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center">
+            {/* Mobile: Stack cards vertically */}
+            <div className="md:hidden w-full space-y-6">
+              <div className="fade-in-up">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-dark-green mb-3">Zero Emissions</h3>
+                    <p className="text-gray-700 leading-relaxed text-sm">Our e-rickshaws are 100% electric, meaning no emissions, no pollution, and a cleaner environment for everyone.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="fade-in-up">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-dark-green mb-3">Durability</h3>
+                    <p className="text-gray-700 leading-relaxed text-sm">Engineered with the highest quality materials, our vehicles are built to last, even on rough roads.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="fade-in-up">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-dark-green mb-3">Extended Battery Life</h3>
+                    <p className="text-gray-700 leading-relaxed text-sm">Travel further without worry—our e-rickshaws come with high-capacity batteries that deliver exceptional range.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="fade-in-up">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-dark-green mb-3">Comfort and Space</h3>
+                    <p className="text-gray-700 leading-relaxed text-sm">Spacious interiors with ergonomic seating provide maximum comfort for both drivers and passengers.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop: Centered layout with image and cards */}
+            <div className="hidden md:block relative w-full max-w-7xl mx-auto min-h-[550px] lg:min-h-[650px]">
+              {/* Center Image - Perfectly Centered */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[450px] lg:w-[550px] xl:w-[650px] h-[450px] lg:h-[550px] xl:h-[650px] fade-in-up">
+                <Image
+                  src="/feature.png"
+                  alt="Royal Metro EV E-Rickshaw"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1024px) 450px, (max-width: 1280px) 550px, 650px"
+                  priority
+                />
+              </div>
+
+              {/* Left Side Features */}
+              <div className="absolute top-1/2 left-0 lg:left-4 xl:left-8 transform -translate-y-1/2 flex flex-col gap-4 lg:gap-6 z-20">
+                {/* Top Left - Zero Emissions */}
+                <div className="w-[280px] lg:w-[320px] xl:w-[360px] fade-in-up" style={{ animationDelay: '0.1s' }}>
+                  <div className="flex items-start space-x-3">
+                    <div className="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-base lg:text-lg xl:text-xl font-bold text-dark-green mb-1.5 lg:mb-2">Zero Emissions</h3>
+                      <p className="text-gray-700 leading-relaxed text-xs lg:text-sm">
+                        Our e-rickshaws are 100% electric, meaning no emissions, no pollution, and a cleaner environment for everyone.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Left - Extended Battery Life */}
+                <div className="w-[280px] lg:w-[320px] xl:w-[360px] fade-in-up" style={{ animationDelay: '0.3s' }}>
+                  <div className="flex items-start space-x-3">
+                    <div className="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-base lg:text-lg xl:text-xl font-bold text-dark-green mb-1.5 lg:mb-2">Extended Battery Life</h3>
+                      <p className="text-gray-700 leading-relaxed text-xs lg:text-sm">
+                        Travel further without worry—our e-rickshaws come with high-capacity batteries that deliver exceptional range.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side Features */}
+              <div className="absolute top-1/2 right-0 lg:right-4 xl:right-8 transform -translate-y-1/2 flex flex-col gap-4 lg:gap-6 z-20">
+                {/* Top Right - Durability */}
+                <div className="w-[280px] lg:w-[320px] xl:w-[360px] fade-in-up" style={{ animationDelay: '0.2s' }}>
+                  <div className="flex items-start space-x-3">
+                    <div className="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-base lg:text-lg xl:text-xl font-bold text-dark-green mb-1.5 lg:mb-2">Durability</h3>
+                      <p className="text-gray-700 leading-relaxed text-xs lg:text-sm">
+                        Engineered with the highest quality materials, our vehicles are built to last, even on rough roads.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Right - Comfort and Space */}
+                <div className="w-[280px] lg:w-[320px] xl:w-[360px] fade-in-up" style={{ animationDelay: '0.4s' }}>
+                  <div className="flex items-start space-x-3">
+                    <div className="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-base lg:text-lg xl:text-xl font-bold text-dark-green mb-1.5 lg:mb-2">Comfort and Space</h3>
+                      <p className="text-gray-700 leading-relaxed text-xs lg:text-sm">
+                        Spacious interiors with ergonomic seating provide maximum comfort for both drivers and passengers.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Request A Call Back Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-white relative overflow-hidden">
         {/* Background Elements */}
@@ -453,16 +527,16 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-light-green/5 to-transparent rounded-full blur-3xl"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
             {/* Callback Form */}
-            <div className="bg-white rounded-2xl shadow-2xl p-8 sm:p-10 md:p-12 border border-gray-100 fade-in-up">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 sm:p-10 md:p-12 border border-gray-100 fade-in-up flex flex-col">
               <div className="mb-8">
                 <h2 className="text-3xl sm:text-4xl font-bold text-dark-green mb-2">
                   Request A Call Back
                 </h2>
                 <p className="text-gray-600">Fill in your details and we&apos;ll get back to you shortly</p>
               </div>
-              <form onSubmit={handleCallbackSubmit} className="space-y-6">
+              <form onSubmit={handleCallbackSubmit} className="space-y-6 flex-1 flex flex-col">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                   <input
@@ -500,89 +574,62 @@ export default function Home() {
                     placeholder="Enter 10-digit mobile number"
                   />
                 </div>
-                <button
-                  type="submit"
-                  disabled={isSubmittingCallback}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-dark-green to-light-green text-white font-bold rounded-lg hover:shadow-xl hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 transition-all duration-300 shadow-lg shadow-dark-green/30"
-                >
-                  {isSubmittingCallback ? 'Submitting...' : 'Submit'}
-                </button>
+                <div className="mt-auto">
+                  <button
+                    type="submit"
+                    disabled={isSubmittingCallback}
+                    className="w-full px-8 py-4 bg-gradient-to-r from-dark-green to-light-green text-white font-bold rounded-lg hover:shadow-xl hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 transition-all duration-300 shadow-lg shadow-dark-green/30"
+                  >
+                    {isSubmittingCallback ? 'Submitting...' : 'Submit'}
+                  </button>
+                </div>
               </form>
             </div>
 
-            {/* Marketing Content */}
-            <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-dark-green/10 text-dark-green rounded-full text-sm font-semibold mb-4">
-                  India&apos;s Leading EV Marketplace
-                </span>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                  World&apos;s Largest EV Rickshaw Marketplace
-                </h2>
-                <p className="text-lg sm:text-xl text-gray-700 mb-8 leading-relaxed">
-                  Royal Metro EV, manufacturer of premium commercial electric vehicles, brings you the best in eco-friendly transportation. Experience quality, reliability, and innovation in every ride.
-                </p>
-              </div>
-              
-              {/* Feature Blocks */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-dark-green hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-dark-green/10 to-dark-green/5 rounded-xl flex items-center justify-center">
-                      <svg className="w-7 h-7 text-dark-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-dark-green mb-2">CONVENIENCE</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">Quality service, satisfaction, value, convenience, reliability.</p>
-                    </div>
+            {/* Google Map Section */}
+            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 fade-in-up overflow-hidden flex flex-col" style={{ animationDelay: '0.2s' }}>
+              <div className="p-8 sm:p-10 md:p-12 flex flex-col flex-1">
+                <div className="mb-6">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-dark-green mb-2">
+                    Visit Us
+                  </h2>
+                  <p className="text-gray-600 mb-4">Find us at our location</p>
+                  <div className="space-y-2 text-gray-700">
+                    <p className="font-semibold text-dark-green">Royal Metro EV</p>
+                    <p>100, Prempuri, Near Shamli Bus Stand</p>
+                    <p>Muzaffarnagar (U.P.)</p>
                   </div>
                 </div>
-                
-                <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-light-green hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-light-green/10 to-light-green/5 rounded-xl flex items-center justify-center">
-                      <svg className="w-7 h-7 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-light-green mb-2">ECO-FRIENDLY</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">Eco-Friendly Battery Operated E-Vehicle</p>
-                    </div>
-                  </div>
+                <div className="relative w-full flex-1 min-h-[300px] rounded-lg overflow-hidden border border-gray-200 shadow-lg">
+                  <iframe
+                    src="https://maps.google.com/maps?q=100+Prempuri+Near+Shamli+Bus+Stand+Muzaffarnagar+Uttar+Pradesh+India&output=embed&zoom=15"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="absolute inset-0"
+                    title="Royal Metro EV Location - 100, Prempuri, Near Shamli Bus Stand, Muzaffarnagar (U.P.)"
+                  ></iframe>
                 </div>
-                
-                <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-light-green hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-light-green/10 to-light-green/5 rounded-xl flex items-center justify-center">
-                      <svg className="w-7 h-7 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-light-green mb-2">EXPERIENCED TEAM</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">Skilled crew equipped for excellence</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-6 rounded-xl border border-gray-200 hover:border-light-green hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-light-green/10 to-light-green/5 rounded-xl flex items-center justify-center">
-                      <svg className="w-7 h-7 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-light-green mb-2">GREAT VALUE</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">Premium services at great prices</p>
-                    </div>
-                  </div>
+                <div className="mt-4">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=100+Prempuri+Near+Shamli+Bus+Stand+Muzaffarnagar+Uttar+Pradesh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-dark-green to-light-green text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Open in Google Maps
+                  </a>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -650,94 +697,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-dark-green/5 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-bl from-light-green/5 to-transparent rounded-full blur-3xl"></div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Video/Image Section */}
-            <div className="relative fade-in-up">
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-dark-green/10 to-light-green/10 group">
-                <Image
-                  src="/2.png"
-                  alt="Royal Metro EV E-Rickshaw"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                {/* Video Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/10 hover:bg-black/20 transition-colors cursor-pointer">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-dark-green to-light-green rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 border-4 border-white/20">
-                    <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-                {/* Badge */}
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <span className="text-sm font-semibold text-dark-green">Watch Our Story</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Marketing Content */}
-            <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="mb-4">
-                <span className="inline-block px-4 py-2 bg-dark-green/10 text-dark-green rounded-full text-sm font-semibold mb-4">
-                  Our Journey
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                  Our Journey in a Video
-                </h2>
-              </div>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-dark-green to-light-green bg-clip-text text-transparent mb-8">
-                Green Energy, Great Journeys.
-              </h3>
-              <div className="space-y-4 text-lg sm:text-xl text-gray-700">
-                <div className="flex items-start space-x-3 p-4 bg-white rounded-lg border border-gray-100 hover:border-dark-green hover:shadow-md transition-all">
-                  <div className="w-2 h-2 bg-dark-green rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="font-medium">Eco-Friendly Rides, Powered by Innovation.</span>
-                </div>
-                <div className="flex items-start space-x-3 p-4 bg-white rounded-lg border border-gray-100 hover:border-light-green hover:shadow-md transition-all">
-                  <div className="w-2 h-2 bg-light-green rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="font-medium">Ride Smart, Go Green.</span>
-                </div>
-                <div className="flex items-start space-x-3 p-4 bg-white rounded-lg border border-gray-100 hover:border-light-blue hover:shadow-md transition-all">
-                  <div className="w-2 h-2 bg-light-blue rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="font-medium">The Future of Clean Transportation</span>
-                </div>
-                <div className="flex items-start space-x-3 p-4 bg-white rounded-lg border border-gray-100 hover:border-dark-green hover:shadow-md transition-all">
-                  <div className="w-2 h-2 bg-dark-green rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="font-medium">Silent, Smooth, Sustainable.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-dark-green/10 to-light-green/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center fade-in-up scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className={`text-4xl sm:text-5xl md:text-6xl font-bold ${stat.color} mb-2`}>
-                  {stat.value.toLocaleString()}{stat.suffix}
-                </div>
-                <div className="text-gray-600 text-sm sm:text-base md:text-lg font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Gallery Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -776,63 +735,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-dark-green/10 to-light-green/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16 fade-in-up">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark-green mb-4">
-              What Our Customers Say
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Don&apos;t just take our word for it - hear from our satisfied customers
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 sm:p-8 rounded-lg border border-dark-green/20 hover:border-dark-green/40 hover:shadow-xl transition-all duration-300 hover-lift fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-center mb-6">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-dark-green/20 mr-4">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                      sizes="64px"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-dark-green">{testimonial.name}</h3>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    <p className="text-xs text-gray-500">{testimonial.location}</p>
-                  </div>
-                </div>
-                
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-5 h-5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-
-                <p className="text-gray-700 leading-relaxed italic">
-                  &quot;{testimonial.text}&quot;
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white to-light-green/5 relative overflow-hidden">
