@@ -99,7 +99,7 @@ export default function Footer() {
                   Phone: +91 9520587777
                 </a>
               </li>
-              <li>100, Prempuri, Near Shamli Bus Stand<br />Muzaffarnagar (U.P.)</li>
+              <li>Hadi Industries<br />100, Prempuri, Near Shamli Bus Stand<br />Muzaffarnagar (U.P.) 251002</li>
             </ul>
           </div>
         </div>

@@ -57,14 +57,39 @@ export default function Navigation() {
                 />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
-                  <span className="bg-gradient-to-r from-dark-green to-light-green bg-clip-text text-transparent">
-                    Royal Metro
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight relative group">
+                  <span className="relative inline-block">
+                    <span 
+                      className="bg-gradient-to-r from-dark-green via-light-green to-dark-green bg-clip-text text-transparent inline-block animate-gradient"
+                      style={{
+                        backgroundSize: '200% 100%',
+                      }}
+                    >
+                      Royal Metro
+                    </span>
+                    <span 
+                      className="absolute inset-0 bg-gradient-to-r from-dark-green via-light-green to-dark-green bg-clip-text text-transparent blur-sm opacity-50 inline-block animate-gradient pointer-events-none"
+                      style={{
+                        backgroundSize: '200% 100%',
+                      }}
+                      aria-hidden="true"
+                    >
+                      Royal Metro
+                    </span>
                   </span>
-                  <span className="text-light-blue ml-1">EV</span>
+                  <span className="relative inline-block ml-1.5">
+                    <span className="text-light-blue relative z-10 inline-block animate-pulse group-hover:scale-110 transition-transform duration-300 drop-shadow-lg font-extrabold">
+                      EV
+                    </span>
+                    <span className="absolute inset-0 text-light-blue blur-sm opacity-60 animate-pulse pointer-events-none" aria-hidden="true">
+                      EV
+                    </span>
+                  </span>
                 </h1>
-                <p className="text-sm md:text-base text-gray-500 font-medium -mt-0.5">
-                  Electric Mobility
+                <p className="text-sm md:text-base text-gray-500 font-medium -mt-0.5 relative overflow-hidden">
+                  <span className="inline-block animate-[slideIn_0.5s_ease-out_0.3s_forwards] opacity-0">
+                    Electric Mobility
+                  </span>
                 </p>
               </div>
             </Link>

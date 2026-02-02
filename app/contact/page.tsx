@@ -197,8 +197,9 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-dark-green font-semibold mb-1 text-lg">Address</h3>
                       <p className="text-gray-700">
+                        Hadi Industries<br />
                         100, Prempuri, Near Shamli Bus Stand<br />
-                        Muzaffarnagar (U.P.)
+                        Muzaffarnagar (U.P.) 251002
                       </p>
                     </div>
                   </div>

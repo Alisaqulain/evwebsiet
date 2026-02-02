@@ -94,10 +94,10 @@ export default function RootLayout({
               email: 'royalmetroev@gmail.com',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '100, Prempuri, Near Shamli Bus Stand',
+                streetAddress: 'Hadi Industries, 100, Prempuri, Near Shamli Bus Stand',
                 addressLocality: 'Muzaffarnagar',
                 addressRegion: 'Uttar Pradesh',
-                postalCode: '251001',
+                postalCode: '251002',
                 addressCountry: 'IN',
               },
               geo: {

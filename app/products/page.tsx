@@ -6,28 +6,20 @@ import Link from 'next/link'
 export default function ProductsPage() {
   const products = [
     {
+      id: 'classic',
       name: 'Royal Metro Classic',
       description: 'The perfect entry-level electric e-rickshaw with essential features and reliable performance.',
       features: ['60V Battery System', 'Comfortable Seating', 'LED Lighting', 'Digital Display'],
-      price: 'Starting at ₹1,20,000',
       color: 'dark-green',
-      image: '/2.png',
+      image: '/classic.jpeg',
     },
     {
-      name: 'Royal Metro Premium',
-      description: 'Enhanced comfort and advanced features for the discerning customer seeking premium quality.',
-      features: ['72V Battery System', 'Premium Upholstery', 'Music System', 'GPS Navigation'],
-      price: 'Starting at ₹1,50,000',
-      color: 'light-green',
-      image: '/3.png',
-    },
-    {
+      id: 'elite',
       name: 'Royal Metro Elite',
       description: 'The ultimate luxury experience with cutting-edge technology and superior craftsmanship.',
-      features: ['84V Battery System', 'Leather Seats', 'Touchscreen Display', 'Fast Charging'],
-      price: 'Starting at ₹1,80,000',
+      features: ['60V Battery System', 'Leather Seats', 'Touchscreen Display', 'Fast Charging'],
       color: 'light-blue',
-      image: '/WhatsApp Image 2026-01-27 at 2.18.25 PM.jpeg',
+      image: '/elite.jpeg',
     },
   ]
 
@@ -65,14 +57,14 @@ export default function ProductsPage() {
       {/* Products Grid */}
       <section className="py-16 sm:py-20 md:py-24 bg-white relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {products.map((product, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl border border-gray-200 hover:border-dark-green hover:shadow-2xl transition-all duration-300 overflow-hidden group hover-lift fade-in-up"
+                className="bg-white rounded-2xl border border-gray-200 hover:border-dark-green hover:shadow-2xl transition-all duration-300 overflow-hidden group hover-lift fade-in-up flex flex-col"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`relative h-64 overflow-hidden ${
+                <div className={`relative h-80 overflow-hidden ${
                   product.color === 'dark-green' ? 'bg-gradient-to-br from-dark-green/10 to-dark-green/5' :
                   product.color === 'light-green' ? 'bg-gradient-to-br from-light-green/10 to-light-green/5' :
                   'bg-gradient-to-br from-light-blue/10 to-light-blue/5'
@@ -81,7 +73,7 @@ export default function ProductsPage() {
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-contain p-6 group-hover:scale-110 transition-transform duration-500"
+                    className="object-contain p-2 group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                   />
                   <div className="absolute top-4 right-4">
@@ -94,7 +86,7 @@ export default function ProductsPage() {
                     </span>
                   </div>
                 </div>
-                <div className="p-6 sm:p-8">
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
                   <h3 className="text-2xl font-bold text-dark-green mb-3">{product.name}</h3>
                   <p className="text-gray-700 mb-6 leading-relaxed">{product.description}</p>
                   <ul className="space-y-3 mb-6">
@@ -107,13 +99,12 @@ export default function ProductsPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex items-center justify-between pt-6 border-t border-gray-200">
-                    <span className="text-2xl font-bold text-light-blue">{product.price}</span>
+                  <div className="mt-auto pt-6 border-t border-gray-200">
                     <Link
-                      href="/contact"
-                      className="px-6 py-3 bg-gradient-to-r from-dark-green to-light-green text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                      href={`/products/${product.id}`}
+                      className="block w-full px-6 py-3 bg-gradient-to-r from-dark-green to-light-green text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
                     >
-                      Enquire Now
+                      View More
                     </Link>
                   </div>
                 </div>
@@ -139,10 +130,10 @@ export default function ProductsPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { label: 'Battery Capacity', value: '60-84V', icon: '🔋', color: 'dark-green' },
-              { label: 'Range', value: '80-120 km', icon: '📏', color: 'light-green' },
+              { label: 'Battery Capacity', value: '60V', icon: '🔋', color: 'dark-green' },
+              { label: 'Range', value: '100-150 km', icon: '📏', color: 'light-green' },
               { label: 'Max Speed', value: '25-35 km/h', icon: '⚡', color: 'light-blue' },
-              { label: 'Charging Time', value: '6-8 hours', icon: '⏱️', color: 'dark-green' },
+              { label: 'Charging Time', value: '3-4 hrs', icon: '⏱️', color: 'dark-green' },
             ].map((spec, index) => (
               <div
                 key={index}
@@ -171,9 +162,6 @@ export default function ProductsPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { src: '/1.png', alt: 'Royal Metro EV Classic Model', title: 'Classic Model' },
-              { src: '/2.png', alt: 'Royal Metro EV Premium Model', title: 'Premium Model' },
-              { src: '/3.png', alt: 'Royal Metro EV Elite Model', title: 'Elite Model' },
               { src: '/WhatsApp Image 2026-01-27 at 2.18.25 PM.jpeg', alt: 'Electric Vehicle Showcase', title: 'Elite Showcase' },
               { src: '/WhatsApp Image 2026-01-27 at 2.18.26 PM.jpeg', alt: 'Manufacturing Excellence', title: 'Quality Manufacturing' },
               { src: '/fff.jpeg', alt: 'Royal Metro EV', title: 'Premium Design' },
