@@ -24,6 +24,14 @@ export default function Chatbot() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  // Default message options
+  const defaultMessages = [
+    'What is the price?',
+    'Tell me about products',
+    'Battery specifications',
+    'Warranty details',
+  ]
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -166,7 +174,7 @@ Is there anything specific about our e-rickshaws you'd like to know? I can help 
   }
 
   return (
-    <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50">
+    <div className={`fixed ${isOpen ? 'bottom-4 right-4 sm:bottom-6 sm:right-6' : 'bottom-20 right-4 sm:bottom-24 sm:right-6'} z-50 transition-all duration-300`}>
       {/* Chat Button */}
       {!isOpen && (
         <button
@@ -194,7 +202,7 @@ Is there anything specific about our e-rickshaws you'd like to know? I can help 
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="w-[calc(100vw-2rem)] sm:w-80 h-[calc(100vh-8rem)] sm:h-[500px] max-h-[600px] bg-white rounded-lg shadow-2xl flex flex-col border border-gray-200">
+        <div className="w-[calc(100vw-1.5rem)] sm:w-80 md:w-96 h-[calc(100vh-6rem)] sm:h-[500px] md:h-[600px] max-h-[600px] bg-white rounded-lg shadow-2xl flex flex-col border border-gray-200">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -208,7 +216,7 @@ Is there anything specific about our e-rickshaws you'd like to know? I can help 
             </div>
             <button
               onClick={toggleChat}
-              className="text-white hover:text-gray-200 transition-colors"
+              className="text-white hover:text-gray-200 hover:bg-white/20 rounded-full p-1 transition-all duration-200 flex items-center justify-center w-8 h-8"
               aria-label="Close chat"
             >
               <svg
@@ -220,7 +228,7 @@ Is there anything specific about our e-rickshaws you'd like to know? I can help 
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
@@ -277,6 +285,27 @@ Is there anything specific about our e-rickshaws you'd like to know? I can help 
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Default Message Options */}
+          {messages.length === 1 && (
+            <div className="px-4 pb-2 border-t border-gray-200 bg-gray-50">
+              <p className="text-xs text-gray-500 mb-2 mt-2">Quick questions:</p>
+              <div className="flex flex-wrap gap-2">
+                {defaultMessages.map((msg, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setInputValue(msg)
+                      inputRef.current?.focus()
+                    }}
+                    className="px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-full hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 transition-all duration-200 text-gray-700"
+                  >
+                    {msg}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Input */}
           <div className="p-4 border-t border-gray-200 bg-white rounded-b-lg">
             <div className="flex space-x-2">
@@ -287,12 +316,13 @@ Is there anything specific about our e-rickshaws you'd like to know? I can help 
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim()}
                 className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                aria-label="Send message"
               >
                 <svg
                   className="w-5 h-5"
