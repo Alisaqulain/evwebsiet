@@ -174,7 +174,7 @@ Is there anything specific about our e-rickshaws you'd like to know? I can help 
   }
 
   return (
-    <div className={`fixed ${isOpen ? 'bottom-4 right-4 sm:bottom-6 sm:right-6' : 'bottom-20 right-4 sm:bottom-24 sm:right-6'} z-50 transition-all duration-300`}>
+    <div className={`fixed ${isOpen ? 'bottom-4 right-4 sm:bottom-6 sm:right-6' : 'bottom-[72px] right-4 sm:bottom-24 sm:right-6'} z-50 transition-all duration-300`}>
       {/* Chat Button */}
       {!isOpen && (
         <button

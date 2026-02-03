@@ -101,7 +101,7 @@ export default function Home() {
     <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/WebPage">
       {/* Hero Section with Slider Image */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-white" style={{ marginTop: 0, paddingTop: 0 }} itemScope itemType="https://schema.org/ImageObject">
-        <div className="absolute inset-0 z-0 w-full h-full mobile-slide-image">
+        <div className="absolute inset-0 z-0 w-full h-full mobile-slide-image overflow-hidden">
           <Image
             src="/slider.jpeg"
             alt="Royal Metro EV - Best E-Rickshaw Manufacturer in Muzaffarnagar | Green Energy, Great Journeys | 60V Battery, 100-150 KM Range"
@@ -111,6 +111,7 @@ export default function Home() {
             quality={95}
             sizes="100vw"
             itemProp="image"
+            style={{ width: '100%', height: '100%' }}
           />
         </div>
         {/* Scroll Indicator */}

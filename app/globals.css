@@ -255,42 +255,53 @@
   animation: gradient 3s ease infinite;
 }
 
-/* Mobile-only horizontal sliding animation */
+/* Mobile-only horizontal sliding animation - Image pans left to right like slider */
 @keyframes slideHorizontal {
   0% {
-    transform: translateX(-15%);
+    transform: translateX(-25%);
   }
   50% {
-    transform: translateX(15%);
+    transform: translateX(25%);
   }
   100% {
-    transform: translateX(-15%);
+    transform: translateX(-25%);
   }
 }
 
-/* Apply sliding animation only on mobile */
+/* Apply sliding animation ONLY on mobile devices (max-width: 768px) */
 @media (max-width: 768px) {
   .mobile-slide-image {
-    animation: slideHorizontal 20s ease-in-out infinite;
-    width: 130%;
-    left: -15%;
+    animation: slideHorizontal 12s ease-in-out infinite;
+    width: 150%;
+    left: -25%;
     will-change: transform;
+    overflow: hidden;
+    position: absolute;
   }
   
-  .mobile-slide-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .mobile-slide-image img,
+  .mobile-slide-image span[style*="position: absolute"] {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
 }
 
-/* Disable animation on larger screens */
+/* Desktop/Tablet - NO animation, keep static image */
 @media (min-width: 769px) {
   .mobile-slide-image {
     animation: none !important;
     width: 100% !important;
     left: 0 !important;
     transform: none !important;
+  }
+  
+  .mobile-slide-image img,
+  .mobile-slide-image span {
+    transform: none !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
