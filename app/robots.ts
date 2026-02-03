@@ -1,14 +1,14 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://royalmetroev.com' // Update with your actual domain
+  const baseUrl = 'https://royalmetroev.com'
 
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/'],
+        disallow: ['/api/', '/admin/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
