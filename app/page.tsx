@@ -98,32 +98,88 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen bg-white" itemScope itemType="https://schema.org/WebPage">
-      {/* Hero Section with Slider Image */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-white" style={{ marginTop: 0, paddingTop: 0 }} itemScope itemType="https://schema.org/ImageObject">
-        <div className="absolute inset-0 z-0 w-full h-full mobile-slide-image overflow-hidden">
-          <Image
-            src="/slider.jpeg"
-            alt="Royal Metro EV - Best E-Rickshaw Manufacturer in Muzaffarnagar | Green Energy, Great Journeys | 60V Battery, 100-150 KM Range"
-            fill
-            className="object-cover object-center"
-            priority
-            quality={95}
-            sizes="100vw"
-            itemProp="image"
-            style={{ width: '100%', height: '100%' }}
-          />
+    <main 
+      className="min-h-screen bg-white w-full" 
+      style={{ overflowX: 'hidden', overflowY: 'visible', width: '100%', maxWidth: '100%' }}
+      itemScope 
+      itemType="https://schema.org/WebPage"
+      role="main"
+      aria-label="Royal Metro EV - Best E-Rickshaw Manufacturer in Muzaffarnagar Homepage"
+    >
+      {/* Hero Section with Slider Image - Optimized for Mobile - Complete Image Display */}
+      <section 
+        className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen w-full flex items-center justify-center bg-white" 
+        style={{ marginTop: 0, paddingTop: 0, overflow: 'visible', paddingLeft: 0, paddingRight: 0 }} 
+        itemScope 
+        itemType="https://schema.org/ImageObject"
+        aria-label="Royal Metro EV Hero Section - Green Energy, Great Journeys"
+      >
+        <div 
+          className="absolute inset-0 z-0 w-full h-full mobile-slide-image" 
+          style={{ 
+            padding: '0', 
+            margin: '0', 
+            overflow: 'visible',
+            width: '100%',
+            maxWidth: '100%',
+            left: '0',
+            right: '0'
+          }}
+        >
+          <div style={{ 
+            width: '100%', 
+            height: '100%', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            padding: '0',
+            margin: '0',
+            overflow: 'visible',
+            position: 'relative'
+          }}>
+            <Image
+              src="/slider.jpeg"
+              alt="Royal Metro EV 🚗 - Best E-Rickshaw Manufacturer in Muzaffarnagar | Green Energy, Great Journeys | 60V Battery, 100-150 KM Range | I-CAT Certified Electric Rickshaw"
+              fill
+              className="object-contain object-center"
+              priority
+              quality={95}
+              sizes="100vw"
+              itemProp="image"
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: 'contain',
+                objectPosition: 'center',
+                padding: '0',
+                margin: '0',
+                maxWidth: '100%',
+                maxHeight: '100%',
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                right: '0',
+                bottom: '0'
+              }}
+              fetchPriority="high"
+            />
+          </div>
         </div>
         {/* Scroll Indicator */}
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce" aria-hidden="true">
-          <svg className="w-6 h-6 text-dark-green drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce" aria-hidden="true">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-dark-green drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
       </section>
 
       {/* Stats Section - Mobile Optimized - Starts Immediately */}
-      <section className="py-4 sm:py-6 md:py-8 lg:py-12 bg-gradient-to-r from-dark-green to-light-green text-white relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
+      <section 
+        className="py-4 sm:py-6 md:py-8 lg:py-12 bg-gradient-to-r from-dark-green to-light-green text-white relative overflow-hidden" 
+        itemScope 
+        itemType="https://schema.org/Organization"
+        aria-label="Company Statistics and Achievements"
+      >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {[
@@ -143,7 +199,12 @@ export default function Home() {
       </section>
 
       {/* Products Preview Section */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden" itemScope itemType="https://schema.org/ItemList">
+      <section 
+        className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden" 
+        itemScope 
+        itemType="https://schema.org/ItemList"
+        aria-label="Our Premium E-Rickshaw Products"
+      >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16 fade-in-up">
             <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-dark-green/10 text-dark-green rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
@@ -165,16 +226,17 @@ export default function Home() {
                 itemScope
                 itemType="https://schema.org/Product"
               >
-                <div className={`relative h-64 sm:h-72 md:h-80 overflow-hidden ${
+                <div className={`relative h-64 sm:h-72 md:h-80 ${
                   product.color === 'dark-green' ? 'bg-gradient-to-br from-dark-green/10 to-dark-green/5' :
                   'bg-gradient-to-br from-light-blue/10 to-light-blue/5'
-                }`}>
+                }`} style={{ overflow: 'visible' }}>
                   <Image
                     src={product.image}
                     alt={`${product.name} - Premium E-Rickshaw in Muzaffarnagar`}
                     fill
                     className="object-contain p-2 sm:p-4 group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                    style={{ objectFit: 'contain', objectPosition: 'center' }}
                   />
                   <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
                     <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold ${
@@ -225,7 +287,10 @@ export default function Home() {
       </section>
 
       {/* Key Specifications Section */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-dark-green/5 via-white to-light-green/5 relative overflow-hidden">
+      <section 
+        className="py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-dark-green/5 via-white to-light-green/5 relative overflow-hidden"
+        aria-label="E-Rickshaw Key Specifications"
+      >
         <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-bl from-light-blue/10 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-tr from-dark-green/10 to-transparent rounded-full blur-3xl"></div>
 
@@ -263,7 +328,10 @@ export default function Home() {
       </section>
 
       {/* Benefits Section - Mobile Optimized */}
-      <section className="py-8 sm:py-12 md:py-16 bg-white relative overflow-hidden">
+      <section 
+        className="py-8 sm:py-12 md:py-16 bg-white relative overflow-hidden"
+        aria-label="Benefits of E-Rickshaws"
+      >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 fade-in-up">
             <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-light-blue/10 text-light-blue rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
@@ -297,7 +365,10 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
+      <section 
+        className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden"
+        aria-label="About Royal Metro EV"
+      >
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, #1a5f3f 1px, transparent 0)`,
@@ -480,7 +551,10 @@ export default function Home() {
       </section>
 
       {/* FAQ Section - Mobile Optimized */}
-      <section className="py-8 sm:py-12 md:py-16 bg-white relative overflow-hidden">
+      <section 
+        className="py-8 sm:py-12 md:py-16 bg-white relative overflow-hidden"
+        aria-label="Frequently Asked Questions"
+      >
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 fade-in-up">
             <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-light-blue/10 text-light-blue rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">

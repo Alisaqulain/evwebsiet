@@ -9,9 +9,28 @@
   body {
     @apply bg-white text-gray-900 antialiased;
     overflow-x: hidden;
+    overflow-y: auto;
     -webkit-tap-highlight-color: transparent;
     margin: 0;
     padding: 0;
+  }
+  
+  /* Ensure images are not cut off */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Prevent hero section image cutoff */
+  section[aria-label*="Hero"] {
+    overflow: visible !important;
+  }
+  
+  section[aria-label*="Hero"] img {
+    object-fit: contain !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
   }
   
   /* Remove default margins */
@@ -20,14 +39,39 @@
     padding: 0;
   }
   
-  /* Ensure sections start immediately */
+  /* Ensure sections start immediately - Prevent cutoff */
   section {
     margin-top: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
   }
   
-  /* Smooth scrolling */
+  /* Prevent image cutoff in sections */
+  section img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  /* Specifically fix hero section */
+  section[aria-label*="Hero Section"] {
+    overflow: visible !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  section[aria-label*="Hero Section"] > div {
+    overflow: visible !important;
+  }
+  
+  /* Smooth scrolling - Ensure no clipping */
   html {
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   
   /* Optimize animations for performance */
@@ -47,12 +91,20 @@
     img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
     
     /* Improve touch targets */
     button, a {
       min-height: 44px;
       min-width: 44px;
+    }
+    
+    /* Ensure hero section images show completely */
+    section img {
+      max-width: 100%;
+      width: 100%;
+      object-fit: contain !important;
     }
   }
   
@@ -272,29 +324,37 @@
 @media (max-width: 768px) {
   .mobile-slide-image {
     animation: slideHorizontal 12s ease-in-out infinite;
-    width: 150%;
-    left: -25%;
+    width: 100%;
+    left: 0;
     will-change: transform;
-    overflow: hidden;
+    overflow: visible !important;
     position: absolute;
+    padding: 0;
+    margin: 0;
   }
   
   .mobile-slide-image img,
-  .mobile-slide-image span[style*="position: absolute"] {
+  .mobile-slide-image span[style*="position: absolute"],
+  .mobile-slide-image div {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
     object-position: center !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }
 
-/* Desktop/Tablet - NO animation, keep static image */
+/* Desktop/Tablet - NO animation, keep static image - Show complete image */
 @media (min-width: 769px) {
   .mobile-slide-image {
     animation: none !important;
     width: 100% !important;
     left: 0 !important;
     transform: none !important;
+    overflow: visible !important;
   }
   
   .mobile-slide-image img,
@@ -302,6 +362,7 @@
     transform: none !important;
     width: 100% !important;
     height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
 }
-

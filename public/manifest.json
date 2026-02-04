@@ -1,13 +1,44 @@
 {
-  "name": "Royal Metro EV - Best E-Rickshaw Manufacturer",
+  "name": "Royal Metro EV 🚗 - Best E-Rickshaw Manufacturer",
   "short_name": "Royal Metro EV",
-  "description": "Premium electric e-rickshaw manufacturer in Muzaffarnagar, UP. I-CAT Certified E-Rickshaws with 60V Battery, 100-150 KM Range.",
+  "description": "Royal Metro EV 🚗 - Premium electric e-rickshaw manufacturer in Muzaffarnagar, UP. I-CAT Certified E-Rickshaws with 60V Battery, 100-150 KM Range, 3-4 Hrs Charging. Best quality e-rickshaws with warranty.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1a5f3f",
   "orientation": "portrait-primary",
   "icons": [
+    {
+      "src": "/logo.jpeg",
+      "sizes": "72x72",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "96x96",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "128x128",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "144x144",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "152x152",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
     {
       "src": "/logo.jpeg",
       "sizes": "192x192",
@@ -16,12 +47,28 @@
     },
     {
       "src": "/logo.jpeg",
+      "sizes": "384x384",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpeg",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["automotive", "business"],
+  "categories": ["automotive", "business", "transportation"],
   "lang": "en-IN",
-  "dir": "ltr"
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "screenshots": [
+    {
+      "src": "/slider.jpeg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ]
 }
